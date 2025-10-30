@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Preventive Maintenance Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        .form-details {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .heading {
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            text-decoration: underline;
+            margin-top: 120px;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        /* This targets all cells in the first data row */
+        .tall-row td {
+            height: 600px; /* Approx. page-filling height excluding margins */
+            vertical-align: top;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 60px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Form details at top right -->
+    <div class="form-details">
+        DOC NO. : DOE/PED/F-02<br>
+        ISSUE NO. : 02<br>
+        REV.NO. : 00, Dated 04.10.2021
+    </div>
+
+    <!-- Heading -->
+    <div class="heading">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        PREVENTIVE MAINTENANCE SCHEDULE
+    </div>
+
+    <!-- Table with tall row -->
+    <table>
+        <tr>
+            <th>SL.NO</th>
+            <th>JAN</th>
+            <th>FEB</th>
+            <th>MAR</th>
+            <th>APR</th>
+            <th>MAY</th>
+            <th>JUN</th>
+            <th>JUL</th>
+            <th>AUG</th>
+            <th>SEP</th>
+            <th>OCT</th>
+            <th>NOV</th>
+            <th>DEC</th>
+        </tr>
+        <tr class="tall-row">
+            <td>&nbsp;</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td>
+        </tr>
+    </table>
+
+    <!-- Signature -->
+    <div class="signature">
+        SIG. OF O I/C, PED
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calibration Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 40px;
+      background: #f9f9f9;
+    }
+
+    h2 {
+      margin-top: 40px;
+      color: #2c3e50;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #e9f5ff;
+      font-weight: bold;
+    }
+
+    input, select {
+      padding: 6px 10px;
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .btn {
+      padding: 6px 12px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      margin: 10px 5px;
+    }
+
+    .btn-add {
+      background-color: #27ae60;
+      color: white;
+    }
+
+    .btn-remove {
+      background-color: #e74c3c;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+ <h2>Calibration Certification Details</h2>
+<table>
+  <tr>
+    <td>Calibration Reference No.</td>
+    <td><input type="text" style="width: 95%;"></td>
+    <td>Sensor Serial No.</td>
+    <td><input type="text" style="width: 95%;"></td>
+  </tr>
+  <tr>
+    <td>Requisition Reference No.</td>
+    <td><input type="text" style="width: 95%;"></td>
+    <td>Calibration Date</td>
+    <td><input type="date" style="width: 95%;"></td>
+  </tr>
+  <tr>
+    <td>Requisition By</td>
+    <td><input type="text" style="width: 95%;"></td>
+    <td>Calibration Due Date</td>
+    <td><input type="date" style="width: 95%;"></td>
+  </tr>
+  <tr>
+    <td>Purpose/Test of</td>
+    <td><input type="text" style="width: 95%;"></td>
+    <td>Recall Date</td>
+    <td><input type="date" style="width: 95%;"></td>
+  </tr>
+</table>
+  <h2>Calibration Data</h2>
+  <table id="calibrationDataTable">
+    <thead>
+      <tr>
+        <th>Load (unit)</th>
+        <th>Sensor output (unit) INC</th>
+        <th>Sensor output (unit) DEC</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="text" placeholder="Load 1"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><button class="btn btn-remove" onclick="removeRow(this, 'calibrationDataTable')">−</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-add" onclick="addCalibrationRow()">＋</button>
+
+  <h2>Calibration Equipments</h2>
+  <table id="equipmentTable">
+    <thead>
+      <tr>
+        <th>S.No.</th>
+        <th>Equipment</th>
+        <th>Equipment Serial No.</th>
+        <th>Certificate No.</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+  <tr>
+    <td>1</td>
+    <td>
+      <select>
+        <option>Select</option>
+        <option>Calibrator</option>
+        <option>Excitation Source</option>
+        <option>Measuring Equipment</option>
+      </select>
+    </td>
+    <td><input type="text" placeholder="Serial No."></td> <!-- ✅ Correct here -->
+    <td><input type="text" placeholder="Certificate No."></td>
+    <td><button class="btn btn-remove" onclick="removeRow(this, 'equipmentTable')">−</button></td>
+  </tr>
+</tbody>
+  </table>
+  <button class="btn btn-add" onclick="addEquipmentRow()">＋</button>
+  <h2>Environment</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Temperature (°C)</th>
+      <th>Humidity (RH%)</th>
+      <th>Gravity (m/s²)</th>
+      <th>Other</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><input type="number" step="0.01" style="width: 95%;"></td>
+      <td><input type="number" step="0.01" style="width: 95%;"></td>
+      <td><input type="number" step="0.01"  style="width: 95%;"></td>
+      <td><input type="text" style="width: 95%;"></td>
+    </tr>
+  </tbody>
+</table>
+  <script>
+    function addCalibrationRow() {
+      const table = document.getElementById("calibrationDataTable").querySelector("tbody");
+      const rowCount = table.rows.length + 1;
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td><input type="text" placeholder="Load ${rowCount}"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><button class="btn btn-remove" onclick="removeRow(this, 'calibrationDataTable')">−</button></td>
+      `;
+      table.appendChild(row);
+    }
+
+    function addEquipmentRow() {
+      const table = document.getElementById("equipmentTable").querySelector("tbody");
+      const rowCount = table.rows.length + 1;
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td>${rowCount}</td>
+        <td>
+          <select>
+            <option>Select</option>
+            <option>Calibrator</option>
+            <option>Excitation Source</option>
+            <option>Measuring Equipment</option>
+          </select>
+        </td>
+        <td><input type="text" placeholder="Serial No."></td> 
+        <td><input type="text" placeholder="Certificate No."></td>
+        <td><button class="btn btn-remove" onclick="removeRow(this, 'equipmentTable')">−</button></td>
+      `;
+      table.appendChild(row);
+    }
+
+    function removeRow(button, tableId) {
+      const row = button.parentNode.parentNode;
+      const tbody = document.getElementById(tableId).querySelector("tbody");
+      tbody.removeChild(row);
+
+      if (tableId === 'calibrationDataTable') {
+        updateCalibrationPlaceholders();
+      } else if (tableId === 'equipmentTable') {
+        updateSerialNumbers();
+      }
+    }
+
+    function updateCalibrationPlaceholders() {
+      const rows = document.getElementById("calibrationDataTable").querySelector("tbody").rows;
+      for (let i = 0; i < rows.length; i++) {
+        rows[i].cells[0].querySelector("input").placeholder = `Load ${i + 1}`;
+      }
+    }
+
+    function updateSerialNumbers() {
+      const rows = document.getElementById("equipmentTable").querySelector("tbody").rows;
+      for (let i = 0; i < rows.length; i++) {
+        rows[i].cells[0].textContent = i + 1;
+      }
+    }
+  </script>
+
+</body>
+</html>
+<h2>Results</h2>
+<table>
+  <tr>
+    <td>Offset (unit)</td>
+    <td><input type="text" style="width: 95%;"></td>
+    <td>Sensitivity (unit)</td>
+    <td><input type="text" style="width: 95%;"></td>
+  </tr>
+  <tr>
+    <td>Linearity (%FS)</td>
+    <td><input type="text" style="width: 95%;"></td>
+    <td>Repeatability (%FS)</td>
+    <td><input type="text" style="width: 95%;"></td>
+  </tr>
+  <tr>
+    <td>Hysteresis (%FS)</td>
+    <td><input type="text" style="width: 95%;"></td>
+    <td>Overall Accuracy (%FS)</td>
+    <td><input type="text" style="width: 95%;"></td>
+  </tr>
+  <tr>
+    <td>Fitness</td>
+    <td>
+      <select style="width: 100%;">
+        <option value="">Select</option>
+        <option>Fit</option>
+        <option>Unfit</option>
+      </select>
+    </td>
+    <td>Calibration Valid Till</td>
+    <td>
+      <select style="width: 100%;">
+        <option value="">Select</option>
+        <option>Six Months</option>
+        <option>One Year</option>
+      </select>
+    </td>
+  </tr>
+</table>
+
+<h2>Remarks</h2>
+<textarea rows="4" style="width: 100%; border-radius: 4px; padding: 10px; border: 1px solid #ccc;"></textarea>
+
+<br><br>
+<div style="display: flex; justify-content: space-between; margin-top: 40px;">
+  <div>
+    <strong>Calibrated By</strong>
+    <div style="border-bottom: 1px solid #000; width: 300px; height: 40px;"></div>
+  </div>
+  <div>
+    <strong>Checked By</strong>
+    <div style="border-bottom: 1px solid #000; width: 300px; height: 40px;"></div>
+  </div>
+</div>

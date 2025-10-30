@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Preventive Maintenance Checklist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .form-details {
+            text-align: left;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .info-grid {
+            width: 100%;
+            font-size: 15px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-grid td {
+            padding: 4px 8px;
+            vertical-align: top;
+        }
+
+        .left-cell {
+            width: 60%;
+        }
+
+        .right-cell {
+            width: 40%;
+        }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 20px 0 10px 0;
+        }
+
+        table.main-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        table.main-table th, table.main-table td {
+            border: 1px solid black;
+            padding: 5px;
+            vertical-align: top;
+        }
+
+        .electrical-header {
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .bold-row {
+            font-weight: bold;
+        }
+
+        .signature-section,
+        .bottom-signature {
+            margin-top: 30px;
+            font-size: 14px;
+            text-align: right;
+        }
+
+        .signature-content {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .decision-box {
+            border: 1px solid black;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div></div> <!-- Empty for spacing -->
+        <div class="form-details">
+            <div><strong>DOC NO.: DOE/PED/F-03</strong></div>
+            <div><strong>ISSUE NO.: 02</strong></div>
+            <div><strong>REV. NO.: 00, Dated 04.10.2021</strong></div>
+        </div>
+    </div>
+
+    <!-- Info Grid: 4 Fields -->
+    <table class="info-grid">
+        <tr>
+            <td class="left-cell"><strong>Certificate/History card No :</strong></td>
+            <td class="right-cell"><strong>Maintenance sticker :</strong> YES / NO</td>
+        </tr>
+        <tr>
+            <td class="left-cell"><strong>Due Date of Maintenance :</strong></td>
+            <td class="right-cell"><strong>Recall Date :</strong></td>
+        </tr>
+    </table>
+
+    <div class="title">
+        PREVENTIVE MAINTENANCE CHECK LIST / OBSERVATION SHEET
+    </div>
+
+    <table class="main-table">
+        <tr><td colspan="5" class="electrical-header">ELECTRICAL:</td></tr>
+        <tr>
+            <th rowspan="2">SL.NO</th>
+            <th rowspan="2">ACTIVITY</th>
+            <th colspan="2">CHECK STATUS</th>
+            <th rowspan="2">REMARKS</th>
+        </tr>
+        <tr>
+            <th>OK</th>
+            <th>NOT OK</th>
+        </tr>
+
+        <tr class="bold-row"><td>1.0</td><td>POWER SUPPLY</td><td></td><td></td><td></td></tr>
+        <tr><td>1.1</td><td>Check Input power supply</td><td></td><td></td><td></td></tr>
+        <tr><td>1.2</td><td>Check Earth connection from panel to control cabinet & to M/C</td><td></td><td></td><td></td></tr>
+        <tr><td>1.3</td><td>Check Continuity of all fuses provided on control panel</td><td></td><td></td><td></td></tr>
+        <tr><td>1.4</td><td>Check Cables and Shielding</td><td></td><td></td><td></td></tr>
+        <tr><td>1.5</td><td>Check Exhaust Fans in Electrical Cabinet / Operator panel</td><td></td><td></td><td></td></tr>
+
+        <tr class="bold-row"><td>2.0</td><td>RELAYS, CIRCUIT BREAKERS & CONTACTORS</td><td></td><td></td><td></td></tr>
+        <tr><td>2.1</td><td>Check AC/DC control voltage</td><td></td><td></td><td></td></tr>
+        <tr><td>2.2</td><td>Check settings of over load voltage relays</td><td></td><td></td><td></td></tr>
+        <tr><td>2.3</td><td>Check any loose connections/ sparking at terminals</td><td></td><td></td><td></td></tr>
+
+        <tr class="bold-row"><td>3.0</td><td>LIMIT SWITCHES/SENSORS</td><td></td><td></td><td></td></tr>
+        <tr><td>3.1</td><td>Check the functioning of software & Hardware limits</td><td></td><td></td><td></td></tr>
+        <tr><td>3.2</td><td>Check the function of Tool clamp/unclamp sensor & ATC Position sensor</td><td></td><td></td><td></td></tr>
+
+        <tr class="bold-row"><td>4.0</td><td>TRANSFORMERS & RECTIFIERS</td><td></td><td></td><td></td></tr>
+        <tr><td>4.1</td><td>Check Input / Output voltages of Transformers</td><td></td><td></td><td></td></tr>
+        <tr><td>4.2</td><td>Check the functioning & voltages of rectifier</td><td></td><td></td><td></td></tr>
+
+        <tr class="bold-row"><td>5.0</td><td>MOTORS</td><td></td><td></td><td></td></tr>
+        <tr><td>5.1</td><td>Check for proper running of motor & cooling fan</td><td></td><td></td><td></td></tr>
+        <tr><td>5.2</td><td>Check insulation resistance of motors (&gt; 1m. ohm)</td><td></td><td></td><td></td></tr>
+        <tr><td>5.3</td><td>Check winding resistance of motors</td><td></td><td></td><td></td></tr>
+
+        <tr class="bold-row"><td>6.0</td><td>SAFETY</td><td></td><td></td><td></td></tr>
+        <tr><td>6.1</td><td>Check Operator panel & status indicators</td><td></td><td></td><td></td></tr>
+        <tr><td>6.2</td><td>Check Interlocks</td><td></td><td></td><td></td></tr>
+        <tr><td>6.3</td><td>Check Emergency Stop Buttons</td><td></td><td></td><td></td></tr>
+        <tr><td>6.4</td><td>Check Proper Guarding</td><td></td><td></td><td></td></tr>
+        <tr><td>6.5</td><td>Observe any Damage</td><td></td><td></td><td></td></tr>
+    </table>
+
+    <!-- Top Signature -->
+    <div class="signature-section">
+        <div class="signature-content">
+            <div><strong>Signature</strong></div>
+            <div><strong>OIC, PED</strong></div>
+        </div>
+    </div>
+
+    <!-- Decision Box -->
+    <div class="decision-box">
+        <strong>Machine:</strong> Accepted / Rejected<br><br>
+        <strong>Reason if rejected:</strong>
+    </div>
+
+    <!-- Bottom Signature -->
+    <div class="bottom-signature">
+        <div class="signature-content">
+            <div><strong>Signature</strong></div>
+            <div><strong>O I/C Work Centre</strong></div>
+        </div>
+    </div>
+
+</body>
+</html>

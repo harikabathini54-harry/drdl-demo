@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Preventive Maintenance Checklist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        .form-details {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .machine-details {
+            margin-top: 140px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .machine-details-left,
+        .machine-details-right {
+            width: 48%;
+        }
+
+        .machine-details p {
+            margin: 10px 0;
+        }
+
+        .machine-details label {
+            display: inline-block;
+            min-width: 120px;
+        }
+
+        .machine-details input {
+            width: calc(100% - 130px);
+            border: none;
+            border-bottom: 1px solid black;
+            background: transparent;
+            padding: 2px;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            vertical-align: top;
+        }
+
+        .certificate-box {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 30px;
+            font-size: 14px;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-details">
+    <strong>DOC NO.: DOE/PED/F-03</strong><br>
+    <strong>ISSUE NO.: 02</strong><br>
+    <strong>REV.NO.: 00, Dated 04.10.2021</strong>
+</div>
+
+<div class="machine-details">
+    <div class="machine-details-left">
+        <p><label><strong>M/c Name:</strong></label><input type="text"></p>
+        <p><label><strong>Serial No.:</strong></label><input type="text"></p>
+    </div>
+    <div class="machine-details-right">
+        <p><label><strong>Work centre:</strong></label><input type="text"></p>
+        <p><label><strong>Date:</strong></label><input type="text"></p>
+    </div>
+</div>
+
+<div class="heading">
+    PREVENTIVE MAINTENANCE CHECK LIST / OBSERVATION SHEET
+</div>
+
+<table>
+    <tr>
+        <th colspan="2" style="text-align:left;">MECHANICAL:</th>
+        <th colspan="2">CHECK STATUS</th>
+        <th rowspan="2">REMARKS</th>
+    </tr>
+    <tr>
+        <th>SL. NO.</th>
+        <th>ACTIVITY</th>
+        <th>OK</th>
+        <th>NOT OK</th>
+    </tr>
+
+    <!-- Section 1 -->
+    <tr><td><strong>1.0</strong></td><td><strong>LUBRICATION SYSTEM</strong></td><td></td><td></td><td></td></tr>
+    <tr><td>1.1</td><td>Check lubrication system for proper functioning</td><td></td><td></td><td></td></tr>
+    <tr><td>1.2</td><td>Clean / Replace the filter</td><td></td><td></td><td></td></tr>
+    <tr><td>1.3</td><td>Top up oil level in lube tank</td><td></td><td></td><td></td></tr>
+    <tr><td>1.4</td><td>Check Lube Time and Duration</td><td></td><td></td><td></td></tr>
+    <tr><td>1.5</td><td>Check the oil leakage & prevent them, if noticed</td><td></td><td></td><td></td></tr>
+
+    <!-- Section 2 -->
+    <tr><td><strong>2.0</strong></td><td><strong>SPINDLE</strong></td><td></td><td></td><td></td></tr>
+    <tr><td>2.1</td><td>Lubricate the spindle with recommended lubricants</td><td></td><td></td><td></td></tr>
+    <tr><td>2.2</td><td>Check the spindle for its free movement</td><td></td><td></td><td></td></tr>
+
+    <!-- Section 3 -->
+    <tr><td><strong>3.0</strong></td><td><strong>AXES & SLIDES</strong></td><td></td><td></td><td></td></tr>
+    <tr><td>3.1</td><td>Check the Axis movement and Check the Axis noise in rapid movement.</td><td></td><td></td><td></td></tr>
+    <tr><td>3.2</td><td>Check Slide Seals, Inspect covers/Guards & wipers</td><td></td><td></td><td></td></tr>
+    <tr><td>3.3</td><td>Ensure Lubrication on Slides / Ball Screw</td><td></td><td></td><td></td></tr>
+    <tr><td>3.4</td><td>Clean all Gibs and Slides for smooth operation</td><td></td><td></td><td></td></tr>
+    <tr><td>3.5</td><td>Check Coupling, Belt Condition & Tension</td><td></td><td></td><td></td></tr>
+
+    <!-- Section 4 -->
+    <tr><td><strong>4.0</strong></td><td><strong>TRANSMISSION SYSTEM FOR CNC MACHINES</strong></td><td></td><td></td><td></td></tr>
+    <tr><td>4.1</td><td>Check the belt tension condition, adjust or replace accordingly</td><td></td><td></td><td></td></tr>
+    <tr><td>4.2</td><td>Observe noise / missing transmission at couplings, Gearing (wherever applicable /rectify if required)</td><td></td><td></td><td></td></tr>
+    <tr><td>4.3</td><td>Check the dust wipers on either side of the ball or lead screw</td><td></td><td></td><td></td></tr>
+
+    <!-- Section 5 -->
+    <tr><td><strong>5.0</strong></td><td><strong>HYDRAULIC & PNEUMATIC SYSTEM</strong></td><td></td><td></td><td></td></tr>
+    <tr><td>5.1</td><td>Clean / Replace the filters</td><td></td><td></td><td></td></tr>
+    <tr><td>5.2</td><td>Check the oil level and its condition replace or top up to the specified level</td><td></td><td></td><td></td></tr>
+    <tr><td>5.3</td><td>Check the pressure for its proper setting and adjust if necessary</td><td></td><td></td><td></td></tr>
+    <tr><td>5.4</td><td>Check for proper functioning of pressure gauges</td><td></td><td></td><td></td></tr>
+    <tr><td>5.5</td><td>Prevent all leakages (air / oil)</td><td></td><td></td><td></td></tr>
+</table>
+
+<!-- Signature: OIC, PED -->
+<div style="text-align: right; margin-top: 40px;">
+    <p><strong>Signature</strong><br>OIC, PED</p>
+</div>
+
+<!-- Certificate Box -->
+<div class="certificate-box">
+    <strong>Certificate</strong><br>
+    The machine is working satisfactorily after Preventive maintenance. The requirement may be treated as completed.
+</div>
+
+<!-- Signature: O I/C Work Centre -->
+<div style="text-align: right; margin-top: 20px;">
+    <p><strong>Signature</strong><br>O I/C Work Centre</p>
+</div>
+
+</body>
+</html>

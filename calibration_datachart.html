@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calibration Data Chart</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      padding: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .form-container {
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      background: #fff;
+      position: relative;
+      padding-bottom: 40px; /* Space for Submit button */
+    }
+
+    .button-set {
+      position: absolute;
+      top: -18px;
+      right: 20px;
+    }
+
+    .button-set button {
+      margin-left: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    th {
+      background-color: #e9f5ff;
+    }
+
+    input[type="text"],
+    input[type="date"] {
+      width: 100%;
+      padding: 6px;
+      box-sizing: border-box;
+    }
+
+    .btn {
+      padding: 6px 12px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-add {
+      background-color: #27ae60;
+      color: white;
+    }
+
+    .btn-remove {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    .btn-submit {
+      background-color: #2c3e50;
+      color: white;
+      display: block;
+      margin: 30px auto 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 6px;
+    }
+
+    .second-button-set {
+      text-align: right;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Calibration Data Chart</h2>
+
+<form method="POST" action="/submit_calibration_chart">
+  <div class="form-container">
+    <!-- Buttons for both tables -->
+    <div class="button-set">
+      <button type="button" class="btn btn-add" onclick="addFullRow()">＋</button>
+    </div>
+
+    <!-- Table 1 -->
+    <table id="table1">
+      <thead>
+        <tr>
+          <th>Calibration Certificate No.</th>
+          <th>Identification No.</th>
+          <th>Date of Calibration</th>
+          <th>Due Date of Calibration</th>
+          <th>Recall Date</th>
+          <th>Calibration Agency</th>
+          <th>Calibration Method</th>
+          <th>Location</th>
+          <th>Calibrated Accuracy / Uncertainty</th>
+          <th>Status Sticker</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" name="certificate_no[]"></td>
+          <td><input type="text" name="identification_no[]"></td>
+          <td><input type="date" name="date_of_calibration[]"></td>
+          <td><input type="date" name="due_date[]"></td>
+          <td><input type="date" name="recall_date[]"></td>
+          <td><input type="text" name="agency[]"></td>
+          <td><input type="text" name="method[]"></td>
+          <td><input type="text" name="location[]"></td>
+          <td><input type="text" name="accuracy[]"></td>
+          <td><input type="text" name="status_sticker[]"></td>
+          <td><button type="button" class="btn btn-remove" onclick="removeFullRow(this)">−</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Table 2 (Standards) -->
+    <div class="second-button-set">
+      <button type="button" class="btn btn-add" onclick="addStandardsRow()">＋</button>
+    </div>
+    <table id="table2">
+      <thead>
+        <tr>
+          <th>Nomenclature</th>
+          <th>Standard Serial No.</th>
+          <th>Valid Upto</th>
+          <th>Standard Certificate No.</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" name="nomenclature[]"></td>
+          <td><input type="text" name="standard_serial_no[]"></td>
+          <td><input type="date" name="valid_upto[]"></td>
+          <td><input type="text" name="standard_certificate_no[]"></td>
+          <td><button type="button" class="btn btn-remove" onclick="removeRow(this)">−</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" class="btn btn-submit">Submit</button>
+</form>
+
+<!-- JavaScript -->
+<script>
+  function addFullRow() {
+    const table1 = document.getElementById('table1').querySelector('tbody');
+    const table2 = document.getElementById('table2').querySelector('tbody');
+
+    const row1 = document.createElement('tr');
+    row1.innerHTML = `
+      <td><input type="text" name="certificate_no[]"></td>
+      <td><input type="text" name="identification_no[]"></td>
+      <td><input type="date" name="date_of_calibration[]"></td>
+      <td><input type="date" name="due_date[]"></td>
+      <td><input type="date" name="recall_date[]"></td>
+      <td><input type="text" name="agency[]"></td>
+      <td><input type="text" name="method[]"></td>
+      <td><input type="text" name="location[]"></td>
+      <td><input type="text" name="accuracy[]"></td>
+      <td><input type="text" name="status_sticker[]"></td>
+      <td><button type="button" class="btn btn-remove" onclick="removeFullRow(this)">−</button></td>
+    `;
+    table1.appendChild(row1);
+
+    const row2 = document.createElement('tr');
+    row2.innerHTML = `
+      <td><input type="text" name="nomenclature[]"></td>
+      <td><input type="text" name="standard_serial_no[]"></td>
+      <td><input type="date" name="valid_upto[]"></td>
+      <td><input type="text" name="standard_certificate_no[]"></td>
+      <td><button type="button" class="btn btn-remove" onclick="removeRow(this)">−</button></td>
+    `;
+    table2.appendChild(row2);
+  }
+
+  function removeFullRow(button) {
+    const rowIndex = button.closest('tr').rowIndex - 1;
+    const table1 = document.getElementById('table1').querySelector('tbody');
+    const table2 = document.getElementById('table2').querySelector('tbody');
+
+    if (table1.rows.length > 1) {
+      table1.deleteRow(rowIndex);
+      table2.deleteRow(rowIndex);
+    }
+  }
+
+  function addStandardsRow() {
+    const table2 = document.getElementById('table2').querySelector('tbody');
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td><input type="text" name="nomenclature[]"></td>
+      <td><input type="text" name="standard_serial_no[]"></td>
+      <td><input type="date" name="valid_upto[]"></td>
+      <td><input type="text" name="standard_certificate_no[]"></td>
+      <td><button type="button" class="btn btn-remove" onclick="removeRow(this)">−</button></td>
+    `;
+    table2.appendChild(row);
+  }
+
+  function removeRow(button) {
+    const row = button.closest('tr');
+    if (button.closest('tbody').rows.length > 1) {
+      row.remove();
+    }
+  }
+</script>
+
+</body>
+</html>

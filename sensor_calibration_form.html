@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sensor Calibration Report</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+
+    .restricted {
+      text-align: center;
+      font-weight: bold;
+      text-decoration: underline;
+      margin-bottom: 5px;
+    }
+
+    .top-right-table {
+      border: 1px solid black;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .top-right-table td {
+      border: 1px solid black;
+      padding: 4px 8px;
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      margin-bottom: 10px;
+      padding: 0 30px;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+    }
+
+    .heading {
+      text-align: center;
+      margin: 0 20px;
+    }
+
+    .heading h2, .heading h3 {
+      margin: 3px 0;
+    }
+
+    .reference-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .reference-table td {
+      border: 1px solid black;
+      padding: 6px;
+      vertical-align: top;
+    }
+
+    .section3-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .table-block {
+      padding: 0 5px;
+    }
+
+    .sensor-block {
+      flex: 1.1;
+    }
+
+    .equipment-block {
+      flex: 1.5;
+    }
+
+    .environment-block {
+      flex: 0.6;
+    }
+
+    .table-title {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid black;
+      padding: 6px;
+      vertical-align: top;
+    }
+
+    .sensor-table td:first-child {
+      width: 35%;
+      font-weight: bold;
+    }
+
+    .sensor-table td:nth-child(2) {
+      width: 65%;
+    }
+
+    .equipment-table th {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .equipment-table td {
+      text-align: left;
+    }
+
+    .environment-table td {
+      height: 35px;
+    }
+
+    .environment-heading {
+      font-weight: bold;
+    }
+
+    .environment-blank {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Section 1: RESTRICTED -->
+  <div class="restricted">RESTRICTED</div>
+
+  <!-- Right-side table -->
+  <div style="width: 100%; position: relative; margin-top: -25px; margin-bottom: 40px;">
+    <div style="float: right;">
+      <table class="top-right-table">
+        <tr><td>Form No. :</td><td>DOI/F-02</td></tr>
+        <tr><td>Issue No. :</td><td>02</td></tr>
+        <tr><td>Rev. No. :</td><td>02, Dt. 01.06.2022</td></tr>
+        <tr><td>Page No. :</td><td>1 of 1</td></tr>
+      </table>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+
+  <!-- Section 2: Heading and Logos -->
+  <div class="header-row">
+   <img src="DRDO_logo.jpeg" alt="DRDO Logo" class="logo">
+    <div class="heading">
+      <h2>Sensor Calibration Report</h2>
+      <h3>Directorate of Instrumentation</h3>
+      <h3>Defence Research & Development Laboratory, Hyderabad</h3>
+    </div>
+    <img src="DRDL_logo.jpeg" alt="DRDL Logo" class="logo">
+  </div>
+
+  <!-- UPDATED: Calibration Reference Info -->
+  <table class="reference-table">
+    <colgroup>
+      <col style="width: 20%;">
+      <col style="width: 35%;">
+      <col style="width: 15%;">
+      <col style="width: 20%;">
+    </colgroup>
+    <tr>
+      <td>Calibration Reference No.:</td>
+      <td></td>
+      <td>Date:</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Requisition Reference No.:</td>
+      <td></td>
+      <td>Time:</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Requisition By:</td>
+      <td colspan="3"></td>
+    </tr>
+    <tr>
+      <td>Purpose/Test of:</td>
+      <td colspan="3"></td>
+    </tr>
+  </table>
+
+  <!-- Section 3: Sensor + Equipments + Environment -->
+  <div class="section3-container">
+    <div class="table-block sensor-block">
+      <div class="table-title">Sensor</div>
+      <table class="sensor-table">
+        <tr><td>Type:</td><td></td></tr>
+        <tr><td>Range:</td><td></td></tr>
+        <tr><td>Unit:</td><td></td></tr>
+        <tr><td>Make:</td><td></td></tr>
+        <tr><td>Model:</td><td></td></tr>
+        <tr><td>Serial No.:</td><td></td></tr>
+        <tr><td>Bridge:</td><td></td></tr>
+        <tr><td>FSO(mV):</td><td></td></tr>
+        <tr><td>Excitation(V):</td><td></td></tr>
+      </table>
+    </div>
+
+    <div class="table-block equipment-block">
+      <div class="table-title">Calibration Equipments</div>
+      <table class="equipment-table">
+        <tr>
+          <th>Details</th>
+          <th>Calibrator</th>
+          <th>Excitation Source</th>
+          <th>Measuring Equipment</th>
+        </tr>
+        <tr><td>Type</td><td></td><td></td><td></td></tr>
+        <tr><td>Make</td><td></td><td></td><td></td></tr>
+        <tr><td>Serial No.</td><td></td><td></td><td></td></tr>
+        <tr><td>Accuracy</td><td></td><td></td><td></td></tr>
+        <tr><td>Calibration Agency</td><td></td><td></td><td></td></tr>
+        <tr><td>Calibrated On</td><td></td><td></td><td></td></tr>
+        <tr><td>Due On</td><td></td><td></td><td></td></tr>
+        <tr><td>Calibration Certificate No.</td><td></td><td></td><td></td></tr>
+      </table>
+    </div>
+
+    <div class="table-block environment-block">
+      <div class="table-title">Environment</div>
+      <table class="environment-table">
+        <tr><td class="environment-heading">Temperature</td></tr>
+        <tr><td class="environment-blank"></td></tr>
+        <tr><td class="environment-heading">Humidity (RH)</td></tr>
+        <tr><td class="environment-blank"></td></tr>
+        <tr><td class="environment-heading">Gravity (m/s²)</td></tr>
+        <tr><td class="environment-blank"></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Section 4: Calibration Data -->
+  <div style="margin-top: 30px; width: 100%;">
+    <div style="font-weight: bold; margin-bottom: 5px;">Calibration Data:</div>
+    <table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+      <!-- Heading Row -->
+      <tr>
+        <th style="width: 30%; border-right: 1px solid black; text-align: center; padding: 8px; font-weight: bold;">
+          Load (Unit)
+        </th>
+        <th style="width: 70%; text-align: center; padding: 8px;">
+          <div style="font-weight: bold;">Sensor Output (unit)</div>
+          <div style="display: flex; justify-content: space-around; font-weight: bold; margin-top: 6px;">
+            <span>INC</span>
+            <span>DEC</span>
+          </div>
+        </th>
+      </tr>
+    </table>
+
+    <!-- Writing Space Area -->
+    <div style="width: 100%; display: flex; height: 180px; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+      <div style="width: 30%; border-right: 1px solid black;"></div>
+      <div style="width: 70%;"></div>
+    </div>
+  </div>
+
+  <!-- Section 5: Results -->
+  <div style="margin-top: 40px;">
+    <div style="font-weight: bold; margin-bottom: 6px;">Results:</div>
+    <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+      <tr>
+        <td style="width: 20%; border: 1px solid black; padding: 6px;">Offset (unit)</td>
+        <td style="width: 30%; border: 1px solid black; padding: 6px;"></td>
+        <td style="width: 20%; border: 1px solid black; padding: 6px;">Sensitivity (unit)</td>
+        <td style="width: 30%; border: 1px solid black; padding: 6px;"></td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 6px;">Linearity (%FS)</td>
+        <td style="border: 1px solid black; padding: 6px;"></td>
+        <td style="border: 1px solid black; padding: 6px;">Repeatability (%FS)</td>
+        <td style="border: 1px solid black; padding: 6px;"></td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 6px;">Hysteresis (%FS)</td>
+        <td style="border: 1px solid black; padding: 6px;"></td>
+        <td style="border: 1px solid black; padding: 6px;">Overall Accuracy (%FS)</td>
+        <td style="border: 1px solid black; padding: 6px;"></td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 6px;">Fitness</td>
+        <td style="border: 1px solid black; padding: 6px; text-align: center;">Fit / Unfit</td>
+        <td style="border: 1px solid black; padding: 6px;">Calibration Valid Till</td>
+        <td style="border: 1px solid black; padding: 6px; text-align: center;">Six Months / One Year</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Section 6: Remarks -->
+  <div style="margin-top: 40px;">
+    <div style="font-weight: bold; margin-bottom: 6px;">Remarks:</div>
+    <div style="border: 1px solid black; height: 100px;"></div>
+  </div>
+
+  <!-- Section 7: Calibrated By and Checked By -->
+  <div style="display: flex; justify-content: space-between; margin-top: 60px; font-size: 14px; padding: 0 40px;">
+    <strong>Calibrated By</strong>
+    <strong>Checked By</strong>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sensors</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+
+    .form-title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .sensor-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .sensor-table td {
+      border: 1px solid black;
+      padding: 8px;
+      vertical-align: top;
+    }
+
+    .sensor-table td:first-child {
+      width: 35%;
+      font-weight: bold;
+    }
+
+    .sensor-table td:nth-child(2) {
+      width: 65%;
+    }
+
+    input[type="text"], input[type="number"], input[list] {
+      width: 100%;
+      padding: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-title">Sensors</div>
+
+  <form id="sensorForm" method="POST" action="http://localhost:3000/submit-sensor">
+    <table class="sensor-table">
+      <tr>
+        <td>Serial No.</td>
+        <td>
+          <input list="serialList" name="serial_no" id="serial_no" onchange="checkSerialNo(this.value)">
+          <datalist id="serialList"></datalist>
+        </td>
+      </tr>
+      <tr><td>Nomenclature</td><td><input type="text" name="type"></td></tr>
+      <tr><td>Range</td><td><input type="text" name="range"></td></tr>
+      <tr><td>Unit</td><td><input type="text" name="unit"></td></tr>
+      <tr><td>Make</td><td><input type="text" name="make"></td></tr>
+      <tr><td>Model</td><td><input type="text" name="model"></td></tr>
+      <tr><td>Bridge</td><td><input type="text" name="bridge"></td></tr>
+      <tr><td>FSO (mV)</td><td><input type="number" step="0.01" name="fso_mv"></td></tr>
+      <tr><td>Excitation (V)</td><td><input type="number" step="0.01" name="excitation_v"></td></tr>
+      <tr><td>Linearity (%FS)</td><td><input type="number" step="0.01" name="linearity_fs"></td></tr>
+      <tr><td>Hysteresis (%FS)</td><td><input type="number" step="0.01" name="hysteresis_fs"></td></tr>
+      <tr><td>Repeatability (%FS)</td><td><input type="number" step="0.01" name="repeatability_fs"></td></tr>
+      <tr><td>Overall Accuracy (%FS)</td><td><input type="number" step="0.01" name="overall_accuracy_fs"></td></tr>
+    </table>
+    <center><button type="submit">Submit</button></center>
+  </form>
+  <p id="notice" style="color: orange; font-weight: bold; text-align: center;"></p>
+
+  <script>
+    let existingSerials = [];
+
+    // Load serial numbers into datalist on page load
+    window.onload = () => {
+  fetch('http://localhost:3000/sensors')
+    .then(res => res.json())
+    .then(data => {
+      const serialList = document.getElementById('serialList');
+      existingSerials = data.map(sensor => sensor.serial_no);
+
+      // Add default 'new entry' option at top
+      const newOption = document.createElement('option');
+      newOption.value = '';
+      newOption.textContent = '--- New Entry ---';
+      serialList.appendChild(newOption);
+
+      // Add existing serials to dropdown
+      data.forEach(sensor => {
+        const option = document.createElement('option');
+        option.value = sensor.serial_no;
+        serialList.appendChild(option);
+      });
+    });
+
+  document.querySelector('button[type="submit"]').disabled = false;
+};
+    // Auto-fill and warn if serial exists
+    function checkSerialNo(serialNo) {
+  const notice = document.getElementById('notice');
+
+  if (!serialNo || serialNo === '') {
+    // Clear all fields and re-enable the submit button
+    document.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
+      if (input.name !== 'serial_no') input.value = '';
+    });
+    notice.textContent = '';
+    document.querySelector('button[type="submit"]').disabled = false;
+    return;
+  }
+
+  // Fetch and check for matching sensor
+  fetch('http://localhost:3000/sensors')
+    .then(res => res.json())
+    .then(data => {
+      const match = data.find(sensor => sensor.serial_no === serialNo);
+      if (match) {
+        document.querySelector('[name="type"]').value = match.type;
+        document.querySelector('[name="range"]').value = match.range;
+        document.querySelector('[name="unit"]').value = match.unit;
+        document.querySelector('[name="make"]').value = match.make;
+        document.querySelector('[name="model"]').value = match.model;
+        document.querySelector('[name="bridge"]').value = match.bridge;
+        document.querySelector('[name="fso_mv"]').value = match.fso_mv;
+        document.querySelector('[name="excitation_v"]').value = match.excitation_v;
+        document.querySelector('[name="linearity_fs"]').value = match.linearity_fs;
+        document.querySelector('[name="hysteresis_fs"]').value = match.hysteresis_fs;
+        document.querySelector('[name="repeatability_fs"]').value = match.repeatability_fs;
+        document.querySelector('[name="overall_accuracy_fs"]').value = match.overall_accuracy_fs;
+
+        notice.textContent = '⚠️ Serial No. already exists. Form fields loaded for view only.';
+        document.querySelector('button[type="submit"]').disabled = true;
+      } else {
+        // Clear fields if not matched
+        document.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
+          if (input.name !== 'serial_no') input.value = '';
+        });
+        notice.textContent = '';
+        document.querySelector('button[type="submit"]').disabled = false;
+      }
+    });
+}
+    // Prevent submit for existing serial
+    document.getElementById('sensorForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const serialNo = document.getElementById('serial_no').value.trim();
+
+      if (existingSerials.includes(serialNo)) {
+        alert('🚫 Cannot submit: This Serial No. already exists in the database.');
+        return;
+      }
+
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => data[key] = value);
+
+      fetch('http://localhost:3000/submit-sensor', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(response => {
+        alert(response.message);
+      })
+      .catch(error => {
+        alert('❌ Error: ' + error.message);
+      });
+    });
+  </script>
+
+</body>
+</html>
